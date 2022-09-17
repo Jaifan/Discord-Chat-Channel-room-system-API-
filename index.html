@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
     <title>Discord Meet System API</title>
-    <body>
         <h3>Discord Meet API</h3>
         <p>
             A Node application based on express mongodb & jsonwebtoken tecnologies.<br/>
-            Jsonwebtoken auth system used as authmiddleware after login.
+            Jsonwebtoken auth system used as authmiddleware after login.<br/>
+            Tecnologies : express, nodejs, monogodb, mongoose, jsonwebtoken, bcrypt<br/>
+            Security: cors, xss-clean, helmet, rate-limite
         </p>
-        <p>Owner: Jafran Bin Zakaria, jafranbinzakaria@gmail.com</p>
+
+        <h4>User Schema</h4>
+        <p>{firstName: "Jafran",secondName:"Zakaria",email:"jafranbinzakaria@gmail.com",password:'Hello123'(All fields required & password auto encryption enable.)}</p>
+        <h4>Meet(Discord) Schema</h4>
+        <p>{owner:UserObjectId,meetName:'Coding Channel',meetPassword:'meet123',members:[],messgeList:{message;'Hello World',messageSender:UserObjectId,messageTime:defalut set}}</p>
+
+        <h4>Routing URL</h4>
+        <p>Register User(POST): "https://discord-system-jaifan.herokuapp.com/api/v1/auth/register" post(userSchema)</p>
+        <p>Login User(POST): "https://discord-system-jaifan.herokuapp.com/api/v1/auth/login" post(email,password)</p>
+        <h5>After Login, Set Jsonwebtoken in header.authorization: "Bearer TOKEN" : then,</h5>
+        <p>Create Meet(POST)(GET): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/" post(meetName,meetPassword)get(meet list where you members )</p>
+        <p>Meet AddMember(POST): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/addMember" post(meetName,meetPassword) Meet owner provide those info</p>
+        <p>Get Meet ID (GET): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/:meetid" (if you a member of meet)</p>
+        <p>Left from Meet(GET): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/:meetid/removeMember" (to left the room)</p>
+        <p>Kickout By Owner(GET): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/:meetid/removeMember/:userid" (Owner forcely remove the user)</p>
+        <p>Send Message to Meet(POST): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/:meetid/sendMessage" post(message) (after the meet member)</p>
+        <p>Remove Message to Meet(GET): "https://discord-system-jaifan.herokuapp.com/api/v1/meetroom/:meetid/removeMember/:msgid" (specify the messageId to remove the message)</p>
+
+        <h3>Owner: Jafran Bin Zakaria, jafranbinzakaria@gmail.com</h3>
+
     </body>
 </html>
